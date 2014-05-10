@@ -9,8 +9,9 @@
 #import "MainViewController.h"
 
 @interface LoginViewController ()
-@property (weak, nonatomic) IBOutlet UIView *emailTextFieldContainer;
 - (IBAction)onSubmitButtonClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UIView *emailTextFieldContainer;
 @end
 
 @implementation LoginViewController
@@ -31,7 +32,7 @@
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
-  self.emailTextField.delegate = self;
+  self.emailField.delegate = self;
 }
 
 #pragma mark IBAction Methods
@@ -40,7 +41,7 @@
   // MAKE API CALL TO ADD EMAIL
   
   // ON SUCCESS UPDATE NSUserDefaults
-  [NSUserDefaults.standardUserDefaults setValue:_emailTextField.text forKey:@"email"];
+  [NSUserDefaults.standardUserDefaults setValue:self.emailField.text forKey:@"email"];
   [NSUserDefaults.standardUserDefaults synchronize];
   MainViewController *mainViewController = [[MainViewController alloc] init];
   [self presentViewController:mainViewController animated:YES completion:^{}];
