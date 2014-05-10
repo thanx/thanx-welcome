@@ -94,7 +94,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="Byn-gf-0Ix" secondAttribute="bottom" constant="5" id="4mI-hM-xft"/>
                         <constraint firstItem="Byn-gf-0Ix" firstAttribute="leading" secondItem="P92-hY-935" secondAttribute="leading" constant="5" id="Jvj-iW-9QN"/>
@@ -104,6 +104,13 @@
                         <constraint firstItem="Byn-gf-0Ix" firstAttribute="top" secondItem="P92-hY-935" secondAttribute="top" constant="5" id="yi4-su-72u"/>
                     </constraints>
                 </view>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Maybe some other stuff?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnp-aL-WBo">
+                    <rect key="frame" x="64" y="89" width="192" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
