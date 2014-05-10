@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController <UITextFieldDelegate>
 @property (nonatomic, weak) IBOutlet UIButton* submitButton;
 @property (nonatomic, weak) IBOutlet UITextField * emailTextField;
 @end

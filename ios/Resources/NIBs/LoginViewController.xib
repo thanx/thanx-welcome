@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
                 <outlet property="emailTextField" destination="0Kf-bW-Fxe" id="TQq-mg-vH2"/>
+                <outlet property="emailTextFieldContainer" destination="6o1-X1-dxb" id="Lhn-On-WMt"/>
                 <outlet property="submitButton" destination="AFS-qX-7hp" id="mJi-zI-WPw"/>
                 <outlet property="view" destination="iN0-l3-epB" id="8x4-IA-dUQ"/>
             </connections>
@@ -16,24 +17,72 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Kf-bW-Fxe">
-                    <rect key="frame" x="20" y="194" width="280" height="30"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQk-W6-oEt">
+                    <rect key="frame" x="10" y="255" width="300" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFS-qX-7hp">
-                    <rect key="frame" x="20" y="243" width="280" height="30"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFS-qX-7hp">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="300" id="0h5-Pt-aYY"/>
+                                <constraint firstAttribute="height" constant="45" id="jEu-IE-4yB"/>
+                            </constraints>
+                            <state key="normal" title="Submit">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="onSubmitButtonClick:" destination="-1" eventType="touchUpInside" id="Rp4-1n-H0Z"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.35659578549999998" green="0.63839285710000004" blue="0.3602311373" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="AFS-qX-7hp" secondAttribute="trailing" id="7ou-bg-YJm"/>
+                        <constraint firstItem="AFS-qX-7hp" firstAttribute="top" secondItem="aQk-W6-oEt" secondAttribute="top" id="HNR-ek-6ve"/>
+                        <constraint firstItem="AFS-qX-7hp" firstAttribute="leading" secondItem="aQk-W6-oEt" secondAttribute="leading" id="HTo-jw-yjz"/>
+                        <constraint firstAttribute="width" constant="300" id="VmN-fd-yyc"/>
+                        <constraint firstAttribute="height" constant="45" id="dHm-GO-86E"/>
+                        <constraint firstAttribute="bottom" secondItem="AFS-qX-7hp" secondAttribute="bottom" id="qvO-EF-fYC"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6o1-X1-dxb">
+                    <rect key="frame" x="10" y="200" width="300" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Submit">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="emailSubmitted:" destination="-1" eventType="touchUpInside" id="miF-tc-aCg"/>
-                    </connections>
-                </button>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Kf-bW-Fxe">
+                            <rect key="frame" x="5" y="5" width="290" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="290" id="PAK-P0-BaR"/>
+                                <constraint firstAttribute="height" constant="35" id="mHm-Iz-aIo"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="ChC-oA-JFD"/>
+                        <constraint firstItem="0Kf-bW-Fxe" firstAttribute="top" secondItem="6o1-X1-dxb" secondAttribute="top" constant="5" id="bzs-vc-uKq"/>
+                        <constraint firstAttribute="trailing" secondItem="0Kf-bW-Fxe" secondAttribute="trailing" constant="5" id="hdE-Pb-Xb9"/>
+                        <constraint firstItem="0Kf-bW-Fxe" firstAttribute="leading" secondItem="6o1-X1-dxb" secondAttribute="leading" constant="5" id="kV0-cx-fGq"/>
+                        <constraint firstAttribute="bottom" secondItem="0Kf-bW-Fxe" secondAttribute="bottom" constant="5" id="kek-1m-hPo"/>
+                        <constraint firstAttribute="width" constant="300" id="pr0-hH-muI"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="aQk-W6-oEt" secondAttribute="trailing" constant="10" id="2Fd-O7-IL9"/>
+                <constraint firstAttribute="trailing" secondItem="6o1-X1-dxb" secondAttribute="trailing" constant="10" id="6xi-nA-SYe"/>
+                <constraint firstItem="aQk-W6-oEt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="DJ1-os-1ym"/>
+                <constraint firstItem="6o1-X1-dxb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="200" id="NvD-yB-bb8"/>
+                <constraint firstItem="aQk-W6-oEt" firstAttribute="top" secondItem="6o1-X1-dxb" secondAttribute="bottom" constant="10" id="mXl-IH-1yp"/>
+                <constraint firstItem="6o1-X1-dxb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="njn-e7-uEb"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
