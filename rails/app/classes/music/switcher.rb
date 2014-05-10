@@ -1,3 +1,5 @@
+require 'appscript'
+
 module Music
   class Switcher
     class << self
