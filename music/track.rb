@@ -2,7 +2,7 @@ module Music
   class Track
 
     def initialize(track_id=nil)
-      @track_id = self.current_id if track_id.nil?
+      @track_id = track_id.nil? ? self.current_id : track_id
     end
 
     def summary
@@ -15,21 +15,21 @@ module Music
       }
     end
 
-    def name; self.track.name.get end
-    def artist; self.track.artist.get end
-    def album; self.track.album.get end
-    def duration; self.track.duration.get end
+    def name; self.reference.name.get end
+    def artist; self.reference.artist.get end
+    def album; self.reference.album.get end
+    def duration; self.reference.duration.get end
+
+    #
+    # @return [Appscript::Reference] reference to the track
+    #
+    def reference
+      self.library.tracks[
+        Appscript.its.persistent_ID.eq(@track_id)
+      ].get[0]
+    end
 
     protected
-
-      #
-      # @return [Appscript::Reference] reference to the track
-      #
-      def track
-        @track ||= self.library.tracks[
-          Appscript.its.persistent_ID.eq(@track_id)
-        ].get[0]
-      end
 
       #
       # @return [String, NilClass] id of current track
