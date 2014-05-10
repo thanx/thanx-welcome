@@ -1,4 +1,5 @@
 class Song < ActiveRecord::Base
-  has_and_belongs_to_many :users
-  validates :path, presence: true
+  belongs_to :users
+
+  validates :track_id, uniqueness: { scope: :user_id}
 end

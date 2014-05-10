@@ -1,0 +1,14 @@
+<%= form_tag(user_songs_path, method: "get") do %>
+  <%= label_tag(:search, "Search") %>
+  <%= text_field_tag(:search) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<ul>
+  <% @songs.each do |song| %>
+    <li>
+      <%= song[:name] %>
+      <%= button_to 'Add', user_songs_path({track_id: song[:id]}) %>
+    </li>
+  <% end %>
+</ul>
