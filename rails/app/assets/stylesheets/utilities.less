@@ -1,3 +1,9 @@
+@x-large-space: 30px;
+@large-space: 20px;
+@medium-space: @x-large-space/2;
+@small-space: @large-space/2;
+@tiny-space: @small-space/2;
+
 .full-width {
   width: 100%;
 }
@@ -22,6 +28,44 @@
   vertical-align: middle !important;
 }
 
-.uppercase {
-  text-transform: uppercase;
+.padding-large {
+  padding: @x-large-space;
+}
+.padding-top-large {
+  padding-top: @x-large-space;
+}
+.padding-bottom-large {
+  padding-bottom: @x-large-space;
+}
+
+.padding-none {
+  padding: 0px !important;
+}
+
+.padding-left-none {
+  padding-left: 0px !important;
+}
+
+.padding-left-tiny {
+  padding-left: @tiny-space;
+}
+
+.padding-bottom-large {
+  padding-bottom: @x-large-space;
+}
+
+.padding-right-medium {
+  padding-right: @medium-space;
+}
+
+.margin-top-large {
+  margin-top: @x-large-space;
+}
+
+.margin-bottom-large {
+  margin-bottom: @x-large-space;
+}
+
+.margin-right-medium {
+  margin-right: @medium-space;
 }
