@@ -1,0 +1,10 @@
+# CocoaPods
+#   http://cocoapods.org
+# Specs List- https://github.com/CocoaPods/Specs
+
+# Supported Targets
+platform :ios, '7.0'
+
+# EstimoteSDK - iOS library for Estimote iBeacon devices
+#  https://github.com/Estimote/iOS-SDK
+pod 'EstimoteSDK', '~> 1.3'

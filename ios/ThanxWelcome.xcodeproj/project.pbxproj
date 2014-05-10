@@ -1,0 +1,439 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4948C77C191D7DB0006A6618 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4948C77A191D7DB0006A6618 /* AppDelegate.m */; };
+		4948C796191D7F80006A6618 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4948C795191D7F80006A6618 /* LoginViewController.m */; };
+		4948C79C191D86FC006A6618 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4948C79A191D86E0006A6618 /* CoreBluetooth.framework */; };
+		4948C79E191D870D006A6618 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4948C79D191D870D006A6618 /* CoreLocation.framework */; };
+		4948C7AA191D88E5006A6618 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4948C7A0191D88E5006A6618 /* InfoPlist.strings */; };
+		4948C7AB191D88E5006A6618 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4948C7A2191D88E5006A6618 /* main.m */; };
+		4948C7AC191D88E5006A6618 /* ThanxWelcome-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4948C7A3191D88E5006A6618 /* ThanxWelcome-Info.plist */; };
+		4948C7AD191D88E5006A6618 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4948C7A7191D88E5006A6618 /* Images.xcassets */; };
+		4948C7AE191D88E5006A6618 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4948C7A9191D88E5006A6618 /* LoginViewController.xib */; };
+		495EE1BC191DA5E800EAD654 /* THXBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 495EE1BB191DA5E800EAD654 /* THXBeaconManager.m */; };
+		495EE1BF191DA5FB00EAD654 /* THXBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = 495EE1BE191DA5FB00EAD654 /* THXBeacon.m */; };
+		49832010191D76B500498FDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4983200F191D76B500498FDD /* Foundation.framework */; };
+		49832012191D76B500498FDD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49832011191D76B500498FDD /* CoreGraphics.framework */; };
+		49832014191D76B500498FDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49832013191D76B500498FDD /* UIKit.framework */; };
+		DA258A19F4C94F6FBB95910B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4010AEBF1D964D90934D8349 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4010AEBF1D964D90934D8349 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4948C779191D7DB0006A6618 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4948C77A191D7DB0006A6618 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4948C794191D7F80006A6618 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		4948C795191D7F80006A6618 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		4948C79A191D86E0006A6618 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		4948C79D191D870D006A6618 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4948C7A1191D88E5006A6618 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4948C7A2191D88E5006A6618 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4948C7A3191D88E5006A6618 /* ThanxWelcome-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ThanxWelcome-Info.plist"; sourceTree = "<group>"; };
+		4948C7A4191D88E5006A6618 /* ThanxWelcome-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ThanxWelcome-Prefix.pch"; sourceTree = "<group>"; };
+		4948C7A7191D88E5006A6618 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4948C7A9191D88E5006A6618 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		495EE1BA191DA5E800EAD654 /* THXBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THXBeaconManager.h; sourceTree = "<group>"; };
+		495EE1BB191DA5E800EAD654 /* THXBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THXBeaconManager.m; sourceTree = "<group>"; };
+		495EE1BD191DA5FB00EAD654 /* THXBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THXBeacon.h; sourceTree = "<group>"; };
+		495EE1BE191DA5FB00EAD654 /* THXBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THXBeacon.m; sourceTree = "<group>"; };
+		4983200C191D76B500498FDD /* ThanxWelcome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThanxWelcome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4983200F191D76B500498FDD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		49832011191D76B500498FDD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		49832013191D76B500498FDD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		49832028191D76B600498FDD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		4E3C07A39B944A4192EBDCB0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49832009191D76B500498FDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4948C79E191D870D006A6618 /* CoreLocation.framework in Frameworks */,
+				4948C79C191D86FC006A6618 /* CoreBluetooth.framework in Frameworks */,
+				49832012191D76B500498FDD /* CoreGraphics.framework in Frameworks */,
+				49832014191D76B500498FDD /* UIKit.framework in Frameworks */,
+				49832010191D76B500498FDD /* Foundation.framework in Frameworks */,
+				DA258A19F4C94F6FBB95910B /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4948C777191D7DB0006A6618 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4948C778191D7DB0006A6618 /* AppDelegate */,
+				4948C77B191D7DB0006A6618 /* Controllers */,
+				4948C7AF191D8966006A6618 /* Helpers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4948C778191D7DB0006A6618 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				4948C779191D7DB0006A6618 /* AppDelegate.h */,
+				4948C77A191D7DB0006A6618 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		4948C77B191D7DB0006A6618 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4948C793191D7F61006A6618 /* Login */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4948C793191D7F61006A6618 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4948C794191D7F80006A6618 /* LoginViewController.h */,
+				4948C795191D7F80006A6618 /* LoginViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4948C79F191D88E5006A6618 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4948C7A0191D88E5006A6618 /* InfoPlist.strings */,
+				4948C7A2191D88E5006A6618 /* main.m */,
+				4948C7A3191D88E5006A6618 /* ThanxWelcome-Info.plist */,
+				4948C7A4191D88E5006A6618 /* ThanxWelcome-Prefix.pch */,
+			);
+			path = "Other Sources";
+			sourceTree = "<group>";
+		};
+		4948C7A5191D88E5006A6618 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4948C7A6191D88E5006A6618 /* Images */,
+				4948C7A8191D88E5006A6618 /* NIBs */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4948C7A6191D88E5006A6618 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4948C7A7191D88E5006A6618 /* Images.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		4948C7A8191D88E5006A6618 /* NIBs */ = {
+			isa = PBXGroup;
+			children = (
+				4948C7A9191D88E5006A6618 /* LoginViewController.xib */,
+			);
+			path = NIBs;
+			sourceTree = "<group>";
+		};
+		4948C7AF191D8966006A6618 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				495EE1B9191DA5E800EAD654 /* THXBeacon */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		495EE1B9191DA5E800EAD654 /* THXBeacon */ = {
+			isa = PBXGroup;
+			children = (
+				495EE1BA191DA5E800EAD654 /* THXBeaconManager.h */,
+				495EE1BB191DA5E800EAD654 /* THXBeaconManager.m */,
+				495EE1BD191DA5FB00EAD654 /* THXBeacon.h */,
+				495EE1BE191DA5FB00EAD654 /* THXBeacon.m */,
+			);
+			path = THXBeacon;
+			sourceTree = "<group>";
+		};
+		49832003191D76B500498FDD = {
+			isa = PBXGroup;
+			children = (
+				4948C777191D7DB0006A6618 /* Classes */,
+				4948C7A5191D88E5006A6618 /* Resources */,
+				4948C79F191D88E5006A6618 /* Other Sources */,
+				4983200E191D76B500498FDD /* Frameworks */,
+				4983200D191D76B500498FDD /* Products */,
+				4E3C07A39B944A4192EBDCB0 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		4983200D191D76B500498FDD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4983200C191D76B500498FDD /* ThanxWelcome.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4983200E191D76B500498FDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4948C79D191D870D006A6618 /* CoreLocation.framework */,
+				4948C79A191D86E0006A6618 /* CoreBluetooth.framework */,
+				4983200F191D76B500498FDD /* Foundation.framework */,
+				49832011191D76B500498FDD /* CoreGraphics.framework */,
+				49832013191D76B500498FDD /* UIKit.framework */,
+				49832028191D76B600498FDD /* XCTest.framework */,
+				4010AEBF1D964D90934D8349 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4983200B191D76B500498FDD /* ThanxWelcome */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49832038191D76B600498FDD /* Build configuration list for PBXNativeTarget "ThanxWelcome" */;
+			buildPhases = (
+				2BC84BC467564CF6A1E606E8 /* Check Pods Manifest.lock */,
+				49832008191D76B500498FDD /* Sources */,
+				49832009191D76B500498FDD /* Frameworks */,
+				4983200A191D76B500498FDD /* Resources */,
+				195E4773CFC94FF5896F26B4 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ThanxWelcome;
+			productName = ThanxWelcome;
+			productReference = 4983200C191D76B500498FDD /* ThanxWelcome.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		49832004191D76B500498FDD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Thanx;
+			};
+			buildConfigurationList = 49832007191D76B500498FDD /* Build configuration list for PBXProject "ThanxWelcome" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 49832003191D76B500498FDD;
+			productRefGroup = 4983200D191D76B500498FDD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4983200B191D76B500498FDD /* ThanxWelcome */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4983200A191D76B500498FDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4948C7AE191D88E5006A6618 /* LoginViewController.xib in Resources */,
+				4948C7AD191D88E5006A6618 /* Images.xcassets in Resources */,
+				4948C7AA191D88E5006A6618 /* InfoPlist.strings in Resources */,
+				4948C7AC191D88E5006A6618 /* ThanxWelcome-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		195E4773CFC94FF5896F26B4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2BC84BC467564CF6A1E606E8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		49832008191D76B500498FDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				495EE1BC191DA5E800EAD654 /* THXBeaconManager.m in Sources */,
+				495EE1BF191DA5FB00EAD654 /* THXBeacon.m in Sources */,
+				4948C77C191D7DB0006A6618 /* AppDelegate.m in Sources */,
+				4948C7AB191D88E5006A6618 /* main.m in Sources */,
+				4948C796191D7F80006A6618 /* LoginViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4948C7A0191D88E5006A6618 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4948C7A1191D88E5006A6618 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		49832036191D76B600498FDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		49832037191D76B600498FDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		49832039191D76B600498FDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E3C07A39B944A4192EBDCB0 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Other Sources/ThanxWelcome-Prefix.pch";
+				INFOPLIST_FILE = "Other Sources/ThanxWelcome-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4983203A191D76B600498FDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E3C07A39B944A4192EBDCB0 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Other Sources/ThanxWelcome-Prefix.pch";
+				INFOPLIST_FILE = "Other Sources/ThanxWelcome-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		49832007191D76B500498FDD /* Build configuration list for PBXProject "ThanxWelcome" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49832036191D76B600498FDD /* Debug */,
+				49832037191D76B600498FDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49832038191D76B600498FDD /* Build configuration list for PBXNativeTarget "ThanxWelcome" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49832039191D76B600498FDD /* Debug */,
+				4983203A191D76B600498FDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 49832004191D76B500498FDD /* Project object */;
+}
