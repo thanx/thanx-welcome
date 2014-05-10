@@ -7,8 +7,15 @@
 //
 
 #import "THXBeaconManager.h"
+#import "AFHTTPRequestOperationManager.h"
 
 static NSString *THXBeaconsUUID = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D"; // @todo: change UUID for beacons
+
+@interface THXBeaconManager()
+
+@property (nonatomic, strong) ESTBeaconRegion* region;
+
+@end
 
 @implementation THXBeaconManager
 
@@ -19,33 +26,48 @@ static NSString *THXBeaconsUUID = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D"; // @t
     self.beaconManager.delegate = self;
 
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:THXBeaconsUUID];
-    ESTBeaconRegion* region = [[ESTBeaconRegion alloc] initWithProximityUUID:uuid
-                                                                  identifier:@"ThanxOffice"];
+    self.region = [[ESTBeaconRegion alloc] initWithProximityUUID:uuid
+                                                      identifier:@"ThanxOffice"];
+    self.region.notifyOnEntry = YES;
+    self.region.notifyOnExit = YES;
 
-    // start looking for estimtoe beacons in region
-    // when beacon ranged beaconManager:didRangeBeacons:inRegion: invoked
-    [self.beaconManager startRangingBeaconsInRegion:region];
+    [self.beaconManager startMonitoringForRegion:self.region];
   }
   return self;
 }
 
--(void)beaconManager:(ESTBeaconManager *)manager
-     didRangeBeacons:(NSArray *)beacons
-            inRegion:(ESTBeaconRegion *)region {
+-(void)beaconManager:(ESTBeaconManager *)beaconManager
+      didEnterRegion:(ESTBeaconRegion *)region {
 
-  if(beacons.count > 0) {
-    // beacon array is sorted based on distance
-    // closest beacon is the first one
-    ESTBeacon* closestBeacon = [beacons objectAtIndex:0];
+  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  NSString *email = [NSUserDefaults.standardUserDefaults valueForKey:@"email"];
+  NSDictionary *parameters = @{@"email": email, @"event": @"enter_region"};
+  [manager POST:@"http://welcome.thanx.com/api/v1.0/events"
+     parameters:parameters
+        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          NSLog(@"JSON: %@", responseObject);
+        }
+        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          NSLog(@"Error: %@", error);
+        }
+   ];
+}
 
-    switch (closestBeacon.proximity) {
-      case CLProximityNear:
+-(void)beaconManager:(ESTBeaconManager *)beaconManager
+       didExitRegion:(ESTBeaconRegion *)region {
 
-      break;
-      default:
-      break;
-    }
-  }
+  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  NSString *email = [NSUserDefaults.standardUserDefaults valueForKey:@"email"];
+  NSDictionary *parameters = @{@"email": email, @"event": @"enter_region"};
+  [manager POST:@"http://welcome.thanx.com/api/v1.0/events"
+     parameters:parameters
+        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          NSLog(@"JSON: %@", responseObject);
+        }
+        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          NSLog(@"Error: %@", error);
+        }
+   ];
 }
 
 @end
