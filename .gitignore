@@ -1,1 +1,2 @@
-rails/tmp
+rails/tmp/*
+rails/log/*
