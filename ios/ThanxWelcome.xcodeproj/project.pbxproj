@@ -20,6 +20,7 @@
 		49832010191D76B500498FDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4983200F191D76B500498FDD /* Foundation.framework */; };
 		49832012191D76B500498FDD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49832011191D76B500498FDD /* CoreGraphics.framework */; };
 		49832014191D76B500498FDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49832013191D76B500498FDD /* UIKit.framework */; };
+		49F660FD191DF6EF0090C8FE /* THXHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F660FC191DF6EF0090C8FE /* THXHTTPClient.m */; };
 		DA258A19F4C94F6FBB95910B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4010AEBF1D964D90934D8349 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,8 @@
 		49832011191D76B500498FDD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		49832013191D76B500498FDD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		49832028191D76B600498FDD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		49F660FB191DF6EF0090C8FE /* THXHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THXHTTPClient.h; sourceTree = "<group>"; };
+		49F660FC191DF6EF0090C8FE /* THXHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THXHTTPClient.m; sourceTree = "<group>"; };
 		4E3C07A39B944A4192EBDCB0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +142,7 @@
 		4948C7AF191D8966006A6618 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				49F660FA191DF6EF0090C8FE /* THXHTTPClient */,
 				495EE1B9191DA5E800EAD654 /* THXBeacon */,
 			);
 			path = Helpers;
@@ -185,6 +189,15 @@
 				4010AEBF1D964D90934D8349 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49F660FA191DF6EF0090C8FE /* THXHTTPClient */ = {
+			isa = PBXGroup;
+			children = (
+				49F660FB191DF6EF0090C8FE /* THXHTTPClient.h */,
+				49F660FC191DF6EF0090C8FE /* THXHTTPClient.m */,
+			);
+			path = THXHTTPClient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F660FD191DF6EF0090C8FE /* THXHTTPClient.m in Sources */,
 				495EE1BC191DA5E800EAD654 /* THXBeaconManager.m in Sources */,
 				4948C77C191D7DB0006A6618 /* AppDelegate.m in Sources */,
 				4948C7AB191D88E5006A6618 /* main.m in Sources */,

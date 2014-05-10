@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "ESTBeaconManager.h"
-#import "THXBeacon.h"
 
 @interface THXBeaconManager : NSObject <ESTBeaconManagerDelegate>
 
