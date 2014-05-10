@@ -36,24 +36,12 @@ static NSString *THXBeaconsUUID = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D"; // @t
   if(beacons.count > 0) {
     // beacon array is sorted based on distance
     // closest beacon is the first one
-    THXBeacon* closestBeacon = (THXBeacon *)[beacons objectAtIndex:0];
-    // @todo: This only would detect the closest iBeacon
-    //if (((THXBeacon *)closestBeacon).hasBeenDetectedSoon) return;
+    ESTBeacon* closestBeacon = [beacons objectAtIndex:0];
 
-    // calculate and set new y position
     switch (closestBeacon.proximity) {
-      case CLProximityUnknown:
-
-      break;
-      case CLProximityImmediate:
-
-      break;
       case CLProximityNear:
-        //((THXBeacon *)closestBeacon).lastTimeDetected = NSDate.date;
-      break;
-      case CLProximityFar:
-      break;
 
+      break;
       default:
       break;
     }
