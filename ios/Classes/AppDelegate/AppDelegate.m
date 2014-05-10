@@ -7,9 +7,21 @@
 //
 
 #import "AppDelegate.h"
+#import "MainViewController.h"
+#import "LoginViewController.h"
+
+@interface AppDelegate ()
+
+@property (nonatomic, strong) UIViewController *currentViewController;
+@property (nonatomic, strong) MainViewController *mainViewController;
+@property (nonatomic, strong) LoginViewController *loginViewController;
+@property (strong, nonatomic) THXBeaconManager *beaconManager;
+
+- (void)updateRootViewController;
+
+@end
 
 @implementation AppDelegate
-@synthesize beaconManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -17,10 +29,12 @@
   self.window.backgroundColor = [UIColor whiteColor];
   [self.window makeKeyAndVisible];
 
-  LoginViewController *loginView = [[LoginViewController alloc] init];
-  [self.window setRootViewController:loginView];
+  [self.window setRootViewController:self.currentViewController];
 
-  beaconManager = [[THXBeaconManager alloc] init];
+  // Listen to notification of user removing email
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootViewController) name:UserDidRemoveEmail object:nil];
+  
+  self.beaconManager = [[THXBeaconManager alloc] init];
 
   return YES;
 }
@@ -50,6 +64,30 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark Setting View Controller Methods
+- (void)updateRootViewController {
+  [UIView transitionWithView:self.window
+                    duration:0.5
+                     options:UIViewAnimationOptionTransitionCrossDissolve
+                  animations:^{ [self.window setRootViewController:self.currentViewController]; }
+                  completion:nil];;
+}
+
+- (UIViewController *)currentViewController
+{
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSString *email = [defaults valueForKey:@"email"];
+  
+  if (!email) {
+    self.loginViewController = [[LoginViewController alloc] init];
+    return self.loginViewController;
+  }
+  else {
+    self.mainViewController = [[MainViewController alloc] init];
+    return self.mainViewController;
+  }
 }
 
 @end

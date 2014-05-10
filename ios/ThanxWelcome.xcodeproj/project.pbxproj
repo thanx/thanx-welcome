@@ -21,6 +21,8 @@
 		49832012191D76B500498FDD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49832011191D76B500498FDD /* CoreGraphics.framework */; };
 		49832014191D76B500498FDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49832013191D76B500498FDD /* UIKit.framework */; };
 		49F660FD191DF6EF0090C8FE /* THXHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F660FC191DF6EF0090C8FE /* THXHTTPClient.m */; };
+		9DAC94E9191DBB06009A358E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC94E8191DBB06009A358E /* MainViewController.m */; };
+		9DAC94EB191DBD04009A358E /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DAC94EA191DBD04009A358E /* MainViewController.xib */; };
 		DA258A19F4C94F6FBB95910B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4010AEBF1D964D90934D8349 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,9 @@
 		49F660FB191DF6EF0090C8FE /* THXHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THXHTTPClient.h; sourceTree = "<group>"; };
 		49F660FC191DF6EF0090C8FE /* THXHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THXHTTPClient.m; sourceTree = "<group>"; };
 		4E3C07A39B944A4192EBDCB0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		9DAC94E7191DBB06009A358E /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Main/MainViewController.h; sourceTree = "<group>"; };
+		9DAC94E8191DBB06009A358E /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Main/MainViewController.m; sourceTree = "<group>"; };
+		9DAC94EA191DBD04009A358E /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +94,7 @@
 		4948C77B191D7DB0006A6618 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9DAC94E6191DBAD1009A358E /* Main */,
 				4948C793191D7F61006A6618 /* Login */,
 			);
 			path = Controllers;
@@ -135,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				4948C7A9191D88E5006A6618 /* LoginViewController.xib */,
+				9DAC94EA191DBD04009A358E /* MainViewController.xib */,
 			);
 			path = NIBs;
 			sourceTree = "<group>";
@@ -189,6 +196,15 @@
 				4010AEBF1D964D90934D8349 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9DAC94E6191DBAD1009A358E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9DAC94E7191DBB06009A358E /* MainViewController.h */,
+				9DAC94E8191DBB06009A358E /* MainViewController.m */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 		49F660FA191DF6EF0090C8FE /* THXHTTPClient */ = {
@@ -255,6 +271,7 @@
 			files = (
 				4948C7AE191D88E5006A6618 /* LoginViewController.xib in Resources */,
 				4948C7AD191D88E5006A6618 /* Images.xcassets in Resources */,
+				9DAC94EB191DBD04009A358E /* MainViewController.xib in Resources */,
 				4948C7AA191D88E5006A6618 /* InfoPlist.strings in Resources */,
 				4948C7AC191D88E5006A6618 /* ThanxWelcome-Info.plist in Resources */,
 			);
@@ -302,6 +319,7 @@
 			files = (
 				49F660FD191DF6EF0090C8FE /* THXHTTPClient.m in Sources */,
 				495EE1BC191DA5E800EAD654 /* THXBeaconManager.m in Sources */,
+				9DAC94E9191DBB06009A358E /* MainViewController.m in Sources */,
 				4948C77C191D7DB0006A6618 /* AppDelegate.m in Sources */,
 				4948C7AB191D88E5006A6618 /* main.m in Sources */,
 				4948C796191D7F80006A6618 /* LoginViewController.m in Sources */,
