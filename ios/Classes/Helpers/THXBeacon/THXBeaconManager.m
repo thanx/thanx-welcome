@@ -7,8 +7,16 @@
 //
 
 #import "THXBeaconManager.h"
+#import "THXHTTPClient.h"
 
 static NSString *THXBeaconsUUID = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D"; // @todo: change UUID for beacons
+
+@interface THXBeaconManager()
+
+@property (nonatomic, strong) ESTBeaconRegion* region;
+@property (nonatomic, strong) THXHTTPClient* client;
+
+@end
 
 @implementation THXBeaconManager
 
@@ -19,45 +27,26 @@ static NSString *THXBeaconsUUID = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D"; // @t
     self.beaconManager.delegate = self;
 
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:THXBeaconsUUID];
-    ESTBeaconRegion* region = [[ESTBeaconRegion alloc] initWithProximityUUID:uuid
-                                                                  identifier:@"ThanxOffice"];
+    self.region = [[ESTBeaconRegion alloc] initWithProximityUUID:uuid
+                                                      identifier:@"ThanxOffice"];
+    self.region.notifyOnEntry = YES;
+    self.region.notifyOnExit = YES;
 
-    // start looking for estimtoe beacons in region
-    // when beacon ranged beaconManager:didRangeBeacons:inRegion: invoked
-    [self.beaconManager startRangingBeaconsInRegion:region];
+    [self.beaconManager startMonitoringForRegion:self.region];
+
+    self.client = [[THXHTTPClient alloc] init];
   }
   return self;
 }
 
--(void)beaconManager:(ESTBeaconManager *)manager
-     didRangeBeacons:(NSArray *)beacons
-            inRegion:(ESTBeaconRegion *)region {
+-(void)beaconManager:(ESTBeaconManager *)beaconManager
+      didEnterRegion:(ESTBeaconRegion *)region {
+  [self.client postToPath:@"events" andParams:@{@"event": @"enter_region"}];
+}
 
-  if(beacons.count > 0) {
-    // beacon array is sorted based on distance
-    // closest beacon is the first one
-    THXBeacon* closestBeacon = (THXBeacon *)[beacons objectAtIndex:0];
-    // @todo: This only would detect the closest iBeacon
-    //if (((THXBeacon *)closestBeacon).hasBeenDetectedSoon) return;
-
-    // calculate and set new y position
-    switch (closestBeacon.proximity) {
-      case CLProximityUnknown:
-
-      break;
-      case CLProximityImmediate:
-
-      break;
-      case CLProximityNear:
-        //((THXBeacon *)closestBeacon).lastTimeDetected = NSDate.date;
-      break;
-      case CLProximityFar:
-      break;
-
-      default:
-      break;
-    }
-  }
+-(void)beaconManager:(ESTBeaconManager *)beaconManager
+       didExitRegion:(ESTBeaconRegion *)region {
+  [self.client postToPath:@"events" andParams:@{@"event": @"exit_region"}];
 }
 
 @end

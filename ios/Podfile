@@ -8,3 +8,7 @@ platform :ios, '7.0'
 # EstimoteSDK - iOS library for Estimote iBeacon devices
 #  https://github.com/Estimote/iOS-SDK
 pod 'EstimoteSDK', '~> 1.3'
+
+# AFNetworking - A delightful iOS and OS X networking framework
+#  https://github.com/AFNetworking/AFNetworking
+pod 'AFNetworking', '~> 2.2'
