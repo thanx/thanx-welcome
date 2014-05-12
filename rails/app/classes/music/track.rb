@@ -3,8 +3,22 @@ require 'appscript'
 module Music
   class Track
 
-    def initialize(track_id=nil)
-      @track_id = track_id.nil? ? self.current_id : track_id
+    #
+    # @param track
+    #   [NilClass] uses the current track
+    #   [String] persistent track id
+    #   [Appscript::Reference] track reference
+    #
+    def initialize(track=nil)
+      case track
+      when NilClass
+        @track_id = self.current_id
+      when String
+        @track_id = track
+      when Appscript::Reference
+        @reference = track
+        @track_id = track.persistent_ID.get
+      end
     end
 
     def summary
@@ -17,18 +31,18 @@ module Music
       }
     end
 
-    def name; self.reference.name.get end
-    def artist; self.reference.artist.get end
-    def album; self.reference.album.get end
+    def name; self.reference.name.get.strip end
+    def artist; self.reference.artist.get.strip end
+    def album; self.reference.album.get.strip end
     def duration; self.reference.duration.get end
 
     #
     # @return [Appscript::Reference] reference to the track
     #
     def reference
-      self.library.tracks[
+      @reference ||= self.library.tracks[
         Appscript.its.persistent_ID.eq(@track_id)
-      ].get[0]
+      ].get[0] rescue nil
     end
 
     protected
