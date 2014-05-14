@@ -50,37 +50,23 @@ NSString * const UserDidRemoveEmail = @"UserDidRemoveEmail";
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+#pragma mark - IBAction Methods
 
-#pragma mark IBAction Methods
 - (IBAction)onRemoveEmailClick:(id)sender {
   NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
   [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
   
   [[NSNotificationCenter defaultCenter] postNotificationName:UserDidRemoveEmail object:nil];
-  
-  // API CALL TO REMOVE REMOVE
 }
 
 - (IBAction)onUpdateEmailClick:(id)sender {
-  // DISPLAY SPINNER
-  // CALL TO SEND TO API
-  // ON SUCCESS SET NSUSERDEFAULTS
   [NSUserDefaults.standardUserDefaults setValue:self.emailField.text forKey:@"email"];
   [NSUserDefaults.standardUserDefaults synchronize];
-  // ON FAILURE DISPLAY ALERT
 }
 
-#pragma mark UITextViewDelegate Methods
+#pragma mark - UITextViewDelegate Methods
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
   [textField resignFirstResponder];

@@ -37,19 +37,16 @@
 
 #pragma mark IBAction Methods
 - (IBAction)onSubmitButtonClick:(id)sender {
-  
-  // MAKE API CALL TO ADD EMAIL
-  
-  // ON SUCCESS UPDATE NSUserDefaults
+
   [NSUserDefaults.standardUserDefaults setValue:self.emailField.text forKey:@"email"];
   [NSUserDefaults.standardUserDefaults synchronize];
   MainViewController *mainViewController = [[MainViewController alloc] init];
   [self presentViewController:mainViewController animated:YES completion:^{}];
   
-  // ON FAILURE DISPLAY ALERT
 }
 
-#pragma mark UITextViewDelegate Methods
+#pragma mark - UITextViewDelegate Methods
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
   [textField resignFirstResponder];
