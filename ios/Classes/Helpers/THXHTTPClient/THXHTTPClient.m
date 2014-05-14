@@ -23,7 +23,7 @@ static NSString *THXClientVersion = @"v1.0";
   self = [super init];
   if (self) {
     self.manager = [AFHTTPRequestOperationManager manager];
-    self.url = [NSString stringWithFormat:@"%@%@", THXClientUrl, THXClientVersion];
+    self.url = [NSString stringWithFormat:@"%@/%@", THXClientUrl, THXClientVersion];
   }
   return self;
 }
