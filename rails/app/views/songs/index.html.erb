@@ -1,14 +1,18 @@
-<%= form_tag(user_songs_path, method: "get") do %>
-  <%= label_tag(:search, "Search") %>
-  <%= text_field_tag(:search) %>
-  <%= submit_tag("Search") %>
-<% end %>
+<div class="container padding-large">
 
-<ul>
-  <% @songs.each do |song| %>
-    <li>
-      <%= song[:name] %>
-      <%= button_to 'Add', user_songs_path({track_id: song[:id]}) %>
-    </li>
+  <%= form_tag user_songs_path, method: 'get', class: 'form-inline' do %>
+    <div class="form-group">
+      <input type="text" name="search" class="form-control" placeholder="Search" value="<%= params[:search] %>">
+    </div>
+    <button type="submit" class="btn blue-aragonite-bkg white white-hover">
+      Search
+    </button>
   <% end %>
-</ul>
+
+  <h3>Selected Songs</h3>
+  <%= render partial: 'songs', locals: { songs: @selections, type: :add } %>
+
+  <h3>Searched Songs</h3>
+  <%= render partial: 'songs', locals: { songs: @songs, type: :delete } %>
+
+</div>

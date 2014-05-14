@@ -1,17 +1,22 @@
 class SongsController < ApplicationController
+
   def index
-    search = params[:search] ? params[:search] : 'song'
-    @songs = Music::Searcher.search(search)
+    @songs = []
+    @songs = Music::Searcher.search(params[:search]) if params[:search].present?
+
+    user = User.find(params[:user_id])
+    @selections = user.songs.map{|song| Music::Track.new(song.track_id).summary}
   end
 
   def create
     user = User.find(params[:user_id])
-    user.songs.create({track_id: params[:track_id]})
-    redirect_to my_songs_user_songs_path(user)
+    case params[:type]
+    when 'remove'
+      user.songs.where(track_id: params[:track_id]).destroy_all
+    when 'add'
+      user.songs.create(track_id: params[:track_id])
+    end
+    redirect_to :back
   end
 
-  def my_songs
-    user = User.find(params[:user_id])
-    @songs = user.songs.map{|song| Music::Track.new(song.track_id).summary}
-  end
 end

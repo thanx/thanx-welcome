@@ -8,41 +8,31 @@ module Music
       # @return [Array]
       #   [
       #     {
-      #       id:
-      #       name:
-      #       artist:
-      #       album
+      #       id:       String, # persistent track id
+      #       name:     String, # track name
+      #       artist:   String, # artist name
+      #       album:    String, # album name
+      #       duration: Float   # track duration in seconds
       #     }
       #   ]
       #
       def search(query)
-        tracks = []
-        tracks.concat(self.tracks_by_title(query))
-        tracks.concat(self.tracks_by_artist(query))
-        return tracks
+        references = self.library.tracks[
+          # search by artst
+          Appscript.its.artist.contains(query).or(
+            # or by song name
+            Appscript.its.name.contains(query)
+          )
+        ].get
+        self.convert_references(references)
       end
 
       protected
 
-        #
-        #
-        #
+        # @param references [Array]
+        # @return [Array<Hash>]
         def convert_references(references)
-          references.map do |reference|
-            Music::Track.new(reference.persistent_ID.get).summary
-          end
-        end
-
-        def tracks_by_artist(artist)
-          self.convert_references(
-            self.library.tracks[Appscript.its.artist.contains(artist)].get
-          )
-        end
-
-        def tracks_by_title(title)
-          self.convert_references(
-            self.library.tracks[Appscript.its.name.contains(title)].get
-          )
+          references.map{ |reference| Music::Track.new(reference).summary }
         end
 
         ### Helpers
