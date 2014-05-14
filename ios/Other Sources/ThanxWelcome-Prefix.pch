@@ -15,4 +15,5 @@
   #import <Foundation/Foundation.h>
   #import "LoginViewController.h"
   #import "THXBeaconManager.h"
+  #import "THXLocalNotification.h"
 #endif

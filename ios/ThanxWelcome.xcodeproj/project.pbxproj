@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4922577B1924135200FC4E3E /* THXLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 4922577A1924135200FC4E3E /* THXLocalNotification.m */; };
 		4948C77C191D7DB0006A6618 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4948C77A191D7DB0006A6618 /* AppDelegate.m */; };
 		4948C796191D7F80006A6618 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4948C795191D7F80006A6618 /* LoginViewController.m */; };
 		4948C79C191D86FC006A6618 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4948C79A191D86E0006A6618 /* CoreBluetooth.framework */; };
@@ -28,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		4010AEBF1D964D90934D8349 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		492257791924135200FC4E3E /* THXLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THXLocalNotification.h; sourceTree = "<group>"; };
+		4922577A1924135200FC4E3E /* THXLocalNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THXLocalNotification.m; sourceTree = "<group>"; };
 		4948C779191D7DB0006A6618 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4948C77A191D7DB0006A6618 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4948C794191D7F80006A6618 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -72,6 +75,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		492257781924133F00FC4E3E /* THXLocalNotification */ = {
+			isa = PBXGroup;
+			children = (
+				492257791924135200FC4E3E /* THXLocalNotification.h */,
+				4922577A1924135200FC4E3E /* THXLocalNotification.m */,
+			);
+			path = THXLocalNotification;
+			sourceTree = "<group>";
+		};
 		4948C777191D7DB0006A6618 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +161,7 @@
 		4948C7AF191D8966006A6618 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				492257781924133F00FC4E3E /* THXLocalNotification */,
 				49F660FA191DF6EF0090C8FE /* THXHTTPClient */,
 				495EE1B9191DA5E800EAD654 /* THXBeacon */,
 			);
@@ -198,15 +211,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9DAC94E6191DBAD1009A358E /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				9DAC94E7191DBB06009A358E /* MainViewController.h */,
-				9DAC94E8191DBB06009A358E /* MainViewController.m */,
-			);
-			name = Main;
-			sourceTree = "<group>";
-		};
 		49F660FA191DF6EF0090C8FE /* THXHTTPClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +218,15 @@
 				49F660FC191DF6EF0090C8FE /* THXHTTPClient.m */,
 			);
 			path = THXHTTPClient;
+			sourceTree = "<group>";
+		};
+		9DAC94E6191DBAD1009A358E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9DAC94E7191DBB06009A358E /* MainViewController.h */,
+				9DAC94E8191DBB06009A358E /* MainViewController.m */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4922577B1924135200FC4E3E /* THXLocalNotification.m in Sources */,
 				49F660FD191DF6EF0090C8FE /* THXHTTPClient.m in Sources */,
 				495EE1BC191DA5E800EAD654 /* THXBeaconManager.m in Sources */,
 				9DAC94E9191DBB06009A358E /* MainViewController.m in Sources */,
