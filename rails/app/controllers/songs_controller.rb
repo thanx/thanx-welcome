@@ -5,8 +5,8 @@ class SongsController < ApplicationController
     @songs = []
     @songs = Music::Searcher.search(params[:search]) if params[:search].present?
 
-    user = User.find(params[:user_id])
-    @selections = user.songs.map{|song| Music::Track.new(song.track_id).summary}
+    @user = User.find(params[:user_id])
+    @selections = @user.songs.map{|song| Music::Track.new(song.track_id).summary}
   end
 
   def create
