@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  before_filter :authenticate
   before_filter :find_user, only: [:edit, :show, :update]
+
   def index
     @users = User.all.order(:first_name)
   end
