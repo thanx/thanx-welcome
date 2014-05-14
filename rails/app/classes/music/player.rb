@@ -20,8 +20,10 @@ module Music
       def state; self.app.player_state.get end
 
       ### Current Track
-      def track(track)
-        self.app.current_track.set(Music::Track.new(track).reference)
+      def track=(track)
+        self.app.current_track.set(
+          Music::Track.new(track).reference
+        )
       end
 
       ### Player Position
