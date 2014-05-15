@@ -44,6 +44,11 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     commonjs (0.2.7)
+    delayed_job (4.0.1)
+      activesupport (>= 3.0, < 4.2)
+    delayed_job_active_record (4.0.1)
+      activerecord (>= 3.0, < 4.2)
+      delayed_job (>= 3.0, < 4.1)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     equalizer (0.0.9)
@@ -160,6 +165,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  delayed_job_active_record
   grape
   jbuilder (~> 2.0)
   jquery-rails
