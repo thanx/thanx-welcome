@@ -29,10 +29,15 @@ module Music
       ### Player Position
 
       # @return [Integer]
-      def position; self.app.player_position.get end
+      def position
+        position = self.app.player_position.get
+        position == :missing_value ? nil : position
+      end
       # Sets the current position in the track
       # @param position [Float] play position in seconds
-      def position=(position); self.app.player_position.set(position.to_f) end
+      def position=(position)
+        self.app.player_position.set(position.to_f) rescue nil
+      end
 
       ### Player Volume
 
