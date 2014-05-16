@@ -32,7 +32,7 @@ module Music
       def position; self.app.player_position.get end
       # Sets the current position in the track
       # @param position [Float] play position in seconds
-      def position=(position); self.app.player_position.set(position) end
+      def position=(position); self.app.player_position.set(position.to_f) end
 
       ### Player Volume
 
