@@ -2,12 +2,12 @@ class SongsController < ApplicationController
   before_filter :authenticate
 
   def index
-    @songs = []
+    @songs = Music::Searcher.all if params[:search].blank?
     @songs = Music::Searcher.search(params[:search]) if params[:search].present?
     @user = User.find(params[:user_id])
     @selections = @user.songs.map do |song|
       Music::Track.new(song.track_id).summary.merge(
-        song_id:       song.id,
+        song_id:  song.id,
         start_at: song.start_at,
         end_at:   song.end_at
       )

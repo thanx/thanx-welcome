@@ -9,7 +9,8 @@
     <% end %>
     <th></th>
   </tr>
-  <% if songs.blank? %>
+  <% songs_count = songs.count %>
+  <% if songs_count == 0 %>
     <td colspan=<%= type == :add ? 6 : 5 %>>No Songs</td>
   <% end %>
   <% songs.each do |song| %>
@@ -59,5 +60,10 @@
         <% end %>
       </td>
     </tr>
+  <% end %>
+  <% if songs_count == Music::SONG_LIMIT %>
+    <td colspan=<%= type == :add ? 6 : 5 %>>
+      Refine search to see potentially truncated songs
+    </td>
   <% end %>
 </table>
