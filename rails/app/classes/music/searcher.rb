@@ -2,7 +2,7 @@ require 'appscript'
 
 module Music
 
-  SONG_LIMIT = 200
+  SONG_LIMIT = 50
 
   class Searcher
     class << self

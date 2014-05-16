@@ -1,39 +1,36 @@
-<div class="container padding-large">
-  <h3><%= link_to '< Home', users_path %></h3>
+<h3><%= link_to '< Home', users_path %></h3>
 
-  <div class="row padding-bottom-large padding-right-medium">
-    <div class="pull-right">
-      <h1 class="uppercase inline x-large">
-        <%= @user.first_name %> <%= @user.last_name %>
-      </h1>
-      <h2 class="inline grey-50"><%= @user.email %></h2>
+<div class="row padding-bottom-large padding-right-medium">
+  <div class="pull-right">
+    <h1 class="uppercase inline x-large">
+      <%= @user.first_name %> <%= @user.last_name %>
+    </h1>
+    <h2 class="inline grey-50"><%= @user.email %></h2>
 
-    </div>
   </div>
-
-  <%= form_for @user, html: {class: "form-horizontal"} do |f| %>
-    <div class="form-group <%= "has-error" if flash[:error].present? && flash[:error]["first_name"].present? %>">
-      <%= f.label :first_name, class: "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.text_field :first_name, class: "form-control" %>
-      </div>
-    </div>
-    <div class="form-group <%= "has-error" if flash[:error].present? && flash[:error]["last_name"].present? %>">
-      <%= f.label :last_name, class: "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.text_field :last_name, class: "form-control" %>
-      </div>
-    </div>
-    <div class="form-group <%= "has-error" if flash[:error].present? && flash[:error]["email"].present? %>">
-      <%= f.label :email, class: "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.text_field :email, class: "form-control" %>
-      </div>
-    </div>
-    <div class="col-sm-2"></div>
-    <div class="col-sm-3 padding-left-tiny">
-      <%= f.submit class: "btn full-width white white-hover emerland-bkg nephritis-hover-bkg" %>
-    </div>
-  <% end %>
 </div>
 
+<%= form_for @user, html: {class: "form-horizontal"} do |f| %>
+  <div class="form-group <%= "has-error" if flash[:error].present? && flash[:error]["first_name"].present? %>">
+    <%= f.label :first_name, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group <%= "has-error" if flash[:error].present? && flash[:error]["last_name"].present? %>">
+    <%= f.label :last_name, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group <%= "has-error" if flash[:error].present? && flash[:error]["email"].present? %>">
+    <%= f.label :email, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+  <div class="col-sm-3 padding-left-tiny">
+    <%= f.submit class: "btn full-width white white-hover emerland-bkg nephritis-hover-bkg" %>
+  </div>
+<% end %>
