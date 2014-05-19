@@ -22,6 +22,7 @@ module Music
     end
 
     def summary
+      return {} if self.reference.nil?
       {
         id:       @track_id,
         name:     self.name,

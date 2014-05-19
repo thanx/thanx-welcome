@@ -1,21 +1,17 @@
-<div class="container padding-large">
+<h3><%= link_to '< Home', users_path %></h3>
+<h2><%= @user.first_name.capitalize %>'s Song List</h2>
 
-  <h3><%= link_to '< Home', users_path %></h3>
-  <h2><%= @user.first_name.capitalize %>'s Song List</h2>
+<%= form_tag user_songs_path, method: 'get', class: 'form-inline' do %>
+  <div class="form-group">
+    <input type="text" name="search" class="form-control" placeholder="Search" value="<%= params[:search] %>">
+  </div>
+  <button type="submit" class="btn blue-aragonite-bkg white white-hover">
+    Search
+  </button>
+<% end %>
 
-  <%= form_tag user_songs_path, method: 'get', class: 'form-inline' do %>
-    <div class="form-group">
-      <input type="text" name="search" class="form-control" placeholder="Search" value="<%= params[:search] %>">
-    </div>
-    <button type="submit" class="btn blue-aragonite-bkg white white-hover">
-      Search
-    </button>
-  <% end %>
+<h3>Selected Songs</h3>
+<%= render partial: 'songs', locals: { songs: @selections, type: :selected } %>
 
-  <h3>Selected Songs</h3>
-  <%= render partial: 'songs', locals: { songs: @selections, type: :add } %>
-
-  <h3>Searched Songs</h3>
-  <%= render partial: 'songs', locals: { songs: @songs, type: :delete } %>
-
-</div>
+<h3>Searched Songs</h3>
+<%= render partial: 'songs', locals: { songs: @songs, type: :unselected } %>

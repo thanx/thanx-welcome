@@ -4,13 +4,14 @@
     <th>Artist</th>
     <th>Album</th>
     <th>Duration</th>
-    <% if type == :add %>
+    <% if type == :selected %>
       <th>Play Duration</th>
     <% end %>
     <th></th>
   </tr>
-  <% if songs.blank? %>
-    <td colspan=<%= type == :add ? 6 : 5 %>>No Songs</td>
+  <% songs_count = songs.count %>
+  <% if songs_count == 0 %>
+    <td colspan=<%= type == :selected ? 6 : 5 %>>No Songs</td>
   <% end %>
   <% songs.each do |song| %>
     <tr>
@@ -18,7 +19,7 @@
       <td><%= song[:artist] %></td>
       <td><%= song[:album] %></td>
       <td><%= song[:duration].round(2) %> seconds</td>
-      <% if type == :add %>
+      <% if type == :selected %>
         <td class="text-center">
           <%= form_tag user_song_path(user_id: @user.id, id: song[:song_id]), method: :patch, class: 'form-inline' do %>
             <div class="form-group">
@@ -37,27 +38,48 @@
       <td class="text-center">
         <%
           case type
-          when :add
+          when :selected
         %>
-          <%=
-            button_to(
-              'Remove',
-              user_songs_path(track_id: song[:id], type: 'remove'),
-              class: 'btn clay-bkg white white-hover'
-            )
-          %>
+          <div>
+            <%=
+              link_to(
+                "<i class='glyphicon glyphicon-play white'></i>".html_safe,
+                user_song_path(user_id: @user.id, id: song[:song_id]),
+                class: 'btn emerland-bkg white white-hover',
+                style: 'display: inline-block;'
+              )
+            %>
+            <%=
+              form_for(
+                user_songs_path(track_id: song[:id]),
+                html: { style: 'display: inline-block' }
+              ) do
+            %>
+              <%= hidden_field_tag 'type', 'remove' %>
+              <%= hidden_field_tag 'track_id', song[:id] %>
+              <button class="btn clay-bkg white white-hover">
+                <i class="glyphicon glyphicon-remove white"></i>
+              </button>
+            <% end %>
+          </div>
         <%
-          when :delete
+          else
         %>
           <%=
             button_to(
-              'Add',
               user_songs_path(track_id: song[:id], type: 'add'),
               class: 'btn blue-aragonite-bkg white white-hover'
-            )
+            ) do
           %>
+            <i class='glyphicon glyphicon-plus white'></i>
+          <% end %>
         <% end %>
       </td>
     </tr>
+  <% end %>
+  <% if songs_count == Music::SONG_LIMIT %>
+    <td colspan=<%= type == :selected ? 6 : 5 %>>
+      Refine your search to see potentially truncated songs
+    </td>
   <% end %>
 </table>

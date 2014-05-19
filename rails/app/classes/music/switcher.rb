@@ -4,44 +4,50 @@ module Music
   class Switcher
     class << self
 
+      FADE_STEP_COUNT = 100
+      FADE_STEP_DURATION = 0.01
 
       #
       # @param track_id [String]
       # @param duration [Float]
       #
-      def switch(track_id, duration=nil)
-        if duration.nil?
-          # permanently switch to the new track
-          volume = Music::Player.volume
-          self.fade_to(0)
-          Music::Player.volume = volume
-          Music::Player.play(track_id)
+      def switch(track_id, start_at, end_at)
+        # keep track of original track info
+        info = Music::Track.new.summary
+
+        # fade to nothing
+        if info.present?
+          info[:state] = Music::Player.state
+          info[:state] == :playing ? self.fade_to(0) : Music::Player.volume = 0
           Music::Player.pause
-          Music::Player.volume = 0
+          info[:position] = Music::Player.position
+          sleep 1
+        end
 
-          Music::Player.play(track_id)
-          self.fade_to(volume)
-        else
-          # keep track of original track info
-          info = Music::Track.new.summary
+        # switch to new track for given duration
+        Music::Player.volume = 0
+        Music::Player.play(track_id)
+        Music::Player.position = start_at.to_f
+        self.fade_to(100)
+        fade_duration = 2*FADE_STEP_COUNT*FADE_STEP_DURATION
+        sleep (end_at - start_at - fade_duration).to_f
+        self.fade_to(0)
+        Music::Player.stop
 
-          # fade to nothing
-          volume = Music::Player.volume
-          self.fade_to(0)
-          Music::Player.pause
-          position = Music::Player.position
-
-          # switch to new track for given duration
-          Music::Player.volume = volume
-          Music::Player.play(track_id)
-          sleep duration
-          Music::Player.pause
-
-          # fade from nothing to original volume
-          Music::Player.volume = 0
+        # fade from nothing to original volume
+        if info.present?
           Music::Player.play(info[:id])
-          Music::Player.position = position
-          self.fade_to(volume)
+          Music::Player.position = info[:position]
+          if info[:state] == :playing
+            sleep 1
+            self.fade_to(100)
+            # ensure at least 5 seconds of original song plays
+            sleep 5
+          else
+            Music::Player.pause
+          end
+        else
+          Music::Player.volume = 100
         end
       end
 
@@ -54,14 +60,13 @@ module Music
         #
         #
         def fade_to(end_volume)
+          end_volume = [[end_volume, 100].min, 0].max
           start_volume = Music::Player.volume
-          puts "fading to #{end_volume} from #{start_volume}"
-          step_size = (end_volume - start_volume) / 20.0
-          puts "step size: #{step_size}"
-          (1..20).each do |step|
-            Music::Player.volume = start_volume + (step_size * step).to_i
-            puts "... #{Music::Player.volume}"
-            sleep 0.05
+          puts "Tuning Volume from #{start_volume} to #{end_volume}"
+          step_size = (end_volume - start_volume) / FADE_STEP_COUNT.to_f
+          (1..FADE_STEP_COUNT).each do |step|
+            Music::Player.volume = (start_volume + (step_size * step).to_i).to_i
+            sleep FADE_STEP_DURATION
           end
           Music::Player.volume = end_volume
         end
@@ -69,25 +74,3 @@ module Music
     end
   end
 end
-
-# # @query
-# Music::Searcher.search('query')
-# # @return
-# [
-#   {
-#     track_id: '0D64E70AB638D696',
-#     name:     'Smells Like Teen Spirit',
-#     album:    'Nevermind',
-#     artist:   'Nirvana'
-#   }
-# ]
-
-# start:
-# stop:
-
-
-
-# SelectedTrack
-# # track_id # String
-# # start_at # Decimal
-# # end_at   # Decimal
