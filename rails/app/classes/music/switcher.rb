@@ -27,6 +27,7 @@ module Music
         # switch to new track for given duration
         Music::Player.volume = 0
         Music::Player.play(track_id)
+        sleep 3 # introduce latency so airplay has time to connect
         Music::Player.position = start_at.to_f
         self.fade_to(100)
         fade_duration = 2*FADE_STEP_COUNT*FADE_STEP_DURATION
@@ -36,6 +37,8 @@ module Music
 
         # fade from nothing to original volume
         if info.present?
+          # set the current track to the original song and continue with
+          # the original player state
           Music::Player.play(info[:id])
           Music::Player.position = info[:position]
           if info[:state] == :playing
