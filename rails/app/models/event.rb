@@ -13,6 +13,7 @@ class Event < ActiveRecord::Base
       if events.blank?
         song = self.user.songs.offset(rand(self.user.songs.count)).first
         if song.present?
+          puts "Playing #{song.track_id} for #{self.user.first_name}"
           Music::Switcher.switch(song.track_id, song.start_at, song.end_at)
         end
       end
