@@ -42,13 +42,11 @@ static NSString *THXBeaconsUUID = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D"; // @t
 -(void)beaconManager:(ESTBeaconManager *)beaconManager
       didEnterRegion:(ESTBeaconRegion *)region {
   [self.client postToPath:@"events" andParams:@{@"event": @"enter_region"}];
-  [THXLocalNotification notify:@"Welcome to Thanx!"];
 }
 
 -(void)beaconManager:(ESTBeaconManager *)beaconManager
        didExitRegion:(ESTBeaconRegion *)region {
   [self.client postToPath:@"events" andParams:@{@"event": @"exit_region"}];
-  [THXLocalNotification notify:@"Go back to work!"];
 }
 
 @end
