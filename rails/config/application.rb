@@ -21,5 +21,9 @@ module ThanxWelcome
     # config.i18n.default_locale = :de
 
     config.autoload_paths += %W(#{config.root}/app/classes)
+
+    # Set default time zone to PT
+    config.time_zone = 'Pacific Time (US & Canada)'
+    config.active_record.default_timezone = 'Pacific Time (US & Canada)'
   end
 end
