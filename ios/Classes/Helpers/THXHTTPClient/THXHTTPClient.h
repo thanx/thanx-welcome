@@ -8,8 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+@class AFHTTPRequestOperation;
+
 @interface THXHTTPClient : NSObject
 
--(void)postToPath:(NSString*)path andParams:(NSDictionary *)params;
++ (THXHTTPClient *)sharedInstance;
+
+- (void)postToPath:(NSString*)path
+       parameters:(NSDictionary *)params;
+
+- (void)postToPath:(NSString*)path
+        parameters:(NSDictionary *)params
+           success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 @end

@@ -15,4 +15,5 @@ class API < Grape::API
   end
 
   mount EventsApi
+  mount AuthApi
 end

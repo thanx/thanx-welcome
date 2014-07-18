@@ -8,13 +8,14 @@
 
 #import "THXBeaconManager.h"
 #import "THXHTTPClient.h"
+#import "THXAuth.h"
 
-static NSString *THXBeaconsUUID = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D"; // @todo: change UUID for beacons
+NSString * const THXBeaconsUUID = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D"; // @todo: change UUID for beacons
+NSString * const THXBeaconsRegionName = @"ThanxOffice";
 
 @interface THXBeaconManager()
 
 @property (nonatomic, strong) ESTBeaconRegion* region;
-@property (nonatomic, strong) THXHTTPClient* client;
 
 @end
 
@@ -28,25 +29,31 @@ static NSString *THXBeaconsUUID = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D"; // @t
 
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:THXBeaconsUUID];
     self.region = [[ESTBeaconRegion alloc] initWithProximityUUID:uuid
-                                                      identifier:@"ThanxOffice"];
+                                                      identifier:THXBeaconsRegionName];
     self.region.notifyOnEntry = YES;
     self.region.notifyOnExit = YES;
 
     [self.beaconManager startMonitoringForRegion:self.region];
-
-    self.client = [[THXHTTPClient alloc] init];
   }
   return self;
 }
 
 -(void)beaconManager:(ESTBeaconManager *)beaconManager
       didEnterRegion:(ESTBeaconRegion *)region {
-  [self.client postToPath:@"events" andParams:@{@"event": @"enter_region"}];
+  if (THXAuth.sharedInstance.isUserAuthenticated) {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"event": @"enter_region"}];
+    parameters[@"email"] = THXAuth.sharedInstance.email;
+    [THXHTTPClient.sharedInstance postToPath:@"events" parameters:parameters];
+  }
 }
 
 -(void)beaconManager:(ESTBeaconManager *)beaconManager
        didExitRegion:(ESTBeaconRegion *)region {
-  [self.client postToPath:@"events" andParams:@{@"event": @"exit_region"}];
+  if (THXAuth.sharedInstance.isUserAuthenticated) {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"event": @"exit_region"}];
+    parameters[@"email"] = THXAuth.sharedInstance.email;
+    [THXHTTPClient.sharedInstance postToPath:@"events" parameters:parameters];
+  }
 }
 
 @end

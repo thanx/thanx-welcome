@@ -13,7 +13,7 @@
 #ifdef __OBJC__
   #import <UIKit/UIKit.h>
   #import <Foundation/Foundation.h>
-  #import "LoginViewController.h"
   #import "THXBeaconManager.h"
-  #import "THXLocalNotification.h"
+  #import "RootViewController.h"
+  #import "THXAuth.h"
 #endif

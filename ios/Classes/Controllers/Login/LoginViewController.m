@@ -6,56 +6,43 @@
 //  Copyright (c) 2014 Thanx. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "LoginViewController.h"
+#import "THXAuth.h"
 
 @interface LoginViewController ()
-- (IBAction)onSubmitButtonClick:(id)sender;
-@property (weak, nonatomic) IBOutlet UITextField *emailField;
-@property (weak, nonatomic) IBOutlet UIView *emailTextFieldContainer;
+
+- (IBAction)submitButtonClick:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
 @end
 
 @implementation LoginViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-    // Custom initialization
-  }
-  return self;
-}
-
 - (void)viewDidLoad {
   [super viewDidLoad];
   // Do any additional setup after loading the view.
-  self.emailTextFieldContainer.backgroundColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:0.25];
+  self.emailTextField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
-  self.emailField.delegate = self;
 }
 
 #pragma mark IBAction Methods
-- (IBAction)onSubmitButtonClick:(id)sender {
-
-  [NSUserDefaults.standardUserDefaults setValue:self.emailField.text forKey:@"email"];
-  [NSUserDefaults.standardUserDefaults synchronize];
-  MainViewController *mainViewController = [[MainViewController alloc] init];
-  [self presentViewController:mainViewController animated:YES completion:^{}];
-  
+- (IBAction)submitButtonClick:(id)sender {
+  NSString * email = self.emailTextField.text;
+  NSString * password = self.passwordTextField.text;
+  if (email.length > 0 && password.length > 0) {
+    [THXAuth.sharedInstance loginWithAccount:email andPassword:password];
+  }
 }
 
 #pragma mark - UITextViewDelegate Methods
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-  [textField resignFirstResponder];
-  return YES;
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-  [self.view endEditing:YES];
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+  [textField becomeFirstResponder];
 }
 
 @end

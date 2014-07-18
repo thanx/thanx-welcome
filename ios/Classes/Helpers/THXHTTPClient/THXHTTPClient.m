@@ -9,8 +9,12 @@
 #import "THXHTTPClient.h"
 #import "AFHTTPRequestOperationManager.h"
 
-static NSString *THXClientUrl = @"http://welcome.thanx.com/api";
-static NSString *THXClientVersion = @"v1.0";
+#ifdef DEBUG
+  static NSString * const THXClientUrl = @"http://thanx-welcome.dev/api";
+#else
+  static NSString * const THXClientUrl = @"http://welcome.thanx.com/api";
+#endif
+static NSString * const THXClientVersion = @"v1.0";
 
 @interface THXHTTPClient()
 @property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
@@ -19,28 +23,32 @@ static NSString *THXClientVersion = @"v1.0";
 
 @implementation THXHTTPClient
 
--(id)init {
-  self = [super init];
-  if (self) {
-    self.manager = [AFHTTPRequestOperationManager manager];
-    self.url = [NSString stringWithFormat:@"%@/%@", THXClientUrl, THXClientVersion];
-  }
-  return self;
++ (THXHTTPClient *)sharedInstance {
+  static THXHTTPClient * _sharedInstance = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    _sharedInstance = [[self alloc] init];
+    _sharedInstance.manager = AFHTTPRequestOperationManager.manager;
+    _sharedInstance.url = [NSString stringWithFormat:@"%@/%@", THXClientUrl, THXClientVersion];
+  });
+  
+  return _sharedInstance;
 }
 
--(void)postToPath:(NSString*)path andParams:(NSDictionary *)params {
-  NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
-  parameters[@"email"] = [NSUserDefaults.standardUserDefaults valueForKey:@"email"];
-  [self.manager POST:[NSString stringWithFormat:@"%@/%@", self.url, path]
-     parameters:parameters
-        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-          NSLog(@"JSON: %@", responseObject);
-        }
-        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-          NSLog(@"Error: %@", error);
-        }
-   ];
+- (void)postToPath:(NSString*)path parameters:(NSDictionary *)params {
+  [self postToPath:path parameters:params success:nil failure:nil];
+}
 
+- (void)postToPath:(NSString*)path
+        parameters:(NSDictionary *)params
+           success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+  
+  [self.manager POST:[NSString stringWithFormat:@"%@/%@", self.url, path]
+          parameters:params
+             success:success
+             failure:failure
+   ];
 }
 
 @end
