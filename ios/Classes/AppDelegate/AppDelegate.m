@@ -35,6 +35,7 @@
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootViewController) name:UserDidRemoveEmail object:nil];
   
   self.beaconManager = [[THXBeaconManager alloc] init];
+  [application setStatusBarStyle:UIStatusBarStyleLightContent];
 
   return YES;
 }

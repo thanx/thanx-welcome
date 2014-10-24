@@ -27,7 +27,6 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   // Do any additional setup after loading the view.
-  self.emailTextFieldContainer.backgroundColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:0.25];
 }
 
 - (void)didReceiveMemoryWarning {

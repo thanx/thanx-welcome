@@ -2,6 +2,8 @@
 #   http://cocoapods.org
 # Specs List- https://github.com/CocoaPods/Specs
 
+source 'https://github.com/CocoaPods/Specs.git'
+
 # Supported Targets
 platform :ios, '7.0'
 

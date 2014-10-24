@@ -10,21 +10,22 @@
 
 NSString * const UserDidRemoveEmail = @"UserDidRemoveEmail";
 
-@interface MainViewController ()
+@interface MainViewController () <CLLocationManagerDelegate>
 - (IBAction)onRemoveEmailClick:(id)sender;
 - (IBAction)onUpdateEmailClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UIView *emailFieldContainer;
+@property (nonatomic, strong) CLLocationManager *manager;
 
 @end
 
 @implementation MainViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)init {
+    self = [super init];
     if (self) {
-        // Custom initialization
+      self.manager = [[CLLocationManager alloc] init];
+      self.manager.delegate = self;
     }
     return self;
 }
@@ -39,15 +40,19 @@ NSString * const UserDidRemoveEmail = @"UserDidRemoveEmail";
   
   self.emailField.delegate = self;
   self.emailField.text = email;
-  
-  self.emailFieldContainer.backgroundColor = [UIColor colorWithRed:.9 green:.9 blue:.9 alpha:0.25];
-  
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  if([self.manager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+    [self.manager requestAlwaysAuthorization];
+  }
+  [self.manager startUpdatingLocation];
 }
 
 
