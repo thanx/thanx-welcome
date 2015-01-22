@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515085214) do
+ActiveRecord::Schema.define(version: 20150122035814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "delayed_jobs", force: true do |t|
+  create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
     t.text     "handler",                null: false
@@ -32,14 +32,15 @@ ActiveRecord::Schema.define(version: 20140515085214) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.integer  "ibeacon_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.json     "params"
   end
 
-  create_table "songs", force: true do |t|
+  create_table "songs", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "track_id"
@@ -48,13 +49,16 @@ ActiveRecord::Schema.define(version: 20140515085214) do
     t.decimal  "end_at",     precision: 8, scale: 2, default: 10.0
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.integer  "preferred_song_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "thanx_id"
   end
+
+  add_index "users", ["thanx_id"], name: "index_users_on_thanx_id", using: :btree
 
 end
