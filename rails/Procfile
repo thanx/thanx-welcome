@@ -1,2 +1,1 @@
-beacon_worker: env TERM_CHILD=1 QUEUE=thanx_welcome RESQUE_TERM_TIMEOUT=7 COUNT=1 bundle exec rake resque:work
-music_worker: QUEUES=music rake jobs:work
+worker: env TERM_CHILD=1 QUEUE=thanx_welcome RESQUE_TERM_TIMEOUT=7 COUNT=1 bundle exec rake resque:work

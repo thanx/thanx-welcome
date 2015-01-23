@@ -1,8 +1,9 @@
 class Event < ActiveRecord::Base
-  after_create :play_song
+  attr_accessor :thanx_user_id
+
   belongs_to :user
 
-  attr_accessor :thanx_user_id
+  after_create :play_song
 
   def thanx_user_id=(thanx_user_id)
     @thanx_user_id = thanx_user_id
@@ -12,18 +13,14 @@ class Event < ActiveRecord::Base
 protected
 
   def play_song
-    events = self.user.events.where(
+    Resque.enqueue(MusicJob, user_id: self.user_id) if no_events_today?
+  end
+
+  def no_events_today?
+    self.user.events.where(
       'created_at >= ? AND created_at < ?',
       Time.current.beginning_of_day, self.created_at
-    )
-    if events.blank?
-      song = self.user.songs.offset(rand(self.user.songs.count)).first
-      if song.present?
-        puts "Playing #{song.track_id} for #{self.user.first_name}"
-        Music::Switcher.switch(song.track_id, song.start_at, song.end_at)
-      end
-    end
+    ).blank?
   end
-  handle_asynchronously :play_song
 
 end
