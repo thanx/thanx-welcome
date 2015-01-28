@@ -13,7 +13,7 @@ class MusicJob
     case
     when @params.key?(:user_id)
       random_song.play
-    when @params.key(:song_id)
+    when @params.key?(:song_id)
       song.play
     end
   end
