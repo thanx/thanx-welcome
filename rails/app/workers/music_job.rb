@@ -21,7 +21,7 @@ class MusicJob
 private
 
   def random_song
-    user.songs.offset(rand(songs.count)).first
+    user.songs.offset(rand(user.songs.count)).first
   end
 
   def user
