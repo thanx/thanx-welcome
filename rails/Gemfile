@@ -33,6 +33,7 @@ gem 'dotenv'
 
 group :development do
   gem 'foreman'
+  gem 'lunchy'
 end
 
 group :test do
