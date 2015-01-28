@@ -41,7 +41,8 @@ class SongsController < ApplicationController
   # GET /users/:user_id/songs/:id
   def show
     redirect_path = user_songs_path(user_id: params[:user_id])
-    Resque.enqueue(MusicJob, song_id: params[:id])
+    song = Song.find(params[:id])
+    Resque.enqueue(MusicJob, song_id: song.id)
     info = Music::Track.new(song.track_id).summary
     redirect_to redirect_path, notice: "Previewing #{info[:name]} by #{info[:artist]}"
   end
