@@ -6,7 +6,14 @@ class Song < ActiveRecord::Base
   validates_numericality_of :end_at, greater_than: :start_at
 
   def play
-    Music::Switcher.switch(self.track_id, self.start_at, self.end_at)
+    tunes = RubyTunes.new
+    tunes.playback.volume = 0
+    RubyTunes::Track.new(id: self.track_id).play
+    tunes.playback.position = self.start_at
+    tunes.fade.in
+    sleep(self.end_at - self.start_at)
+    tunes.fade.out
+    tunes.playback.pause
   end
 
 end

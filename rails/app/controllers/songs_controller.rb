@@ -3,11 +3,14 @@ class SongsController < ApplicationController
 
   # GET /users/:user_id/songs
   def index
-    @songs = Music::Searcher.all if params[:search].blank?
-    @songs = Music::Searcher.search(params[:search]) if params[:search].present?
+    if params[:search].blank?
+      @songs = RubyTunes::Track.all[0,50].map(&:properties)
+    else
+      @songs = RubyTunes::Track.search(params[:search])[0,50].map(&:properties)
+    end
     @user = User.find(params[:user_id])
     @selections = @user.songs.map do |song|
-      Music::Track.new(song.track_id).summary.merge(
+      RubyTunes::Track.new(id: song.track_id).properties.merge(
         song_id:  song.id,
         start_at: song.start_at,
         end_at:   song.end_at
@@ -43,7 +46,7 @@ class SongsController < ApplicationController
     redirect_path = user_songs_path(user_id: params[:user_id])
     song = Song.find(params[:id])
     Resque.enqueue(MusicJob, song_id: song.id)
-    info = Music::Track.new(song.track_id).summary
+    info = RubyTunes::Track.new(id: song.track_id).properties
     redirect_to redirect_path, notice: "Previewing #{info[:name]} by #{info[:artist]}"
   end
 

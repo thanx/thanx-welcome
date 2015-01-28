@@ -12,9 +12,9 @@ class MusicJob
   def perform
     case
     when @params.key?(:user_id)
-      random_song.play
+      random_song.try(:play)
     when @params.key?(:song_id)
-      song.play
+      song.try(:play)
     end
   end
 

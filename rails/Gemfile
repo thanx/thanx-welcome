@@ -27,6 +27,8 @@ gem 'spring',        group: :development
 
 gem 'rb-appscript'
 
+gem 'rubytunes'
+
 gem 'resque', '~> 1.x'
 
 gem 'dotenv'
