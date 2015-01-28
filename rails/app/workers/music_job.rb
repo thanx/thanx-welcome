@@ -10,21 +10,26 @@ class MusicJob
   end
 
   def perform
-    song.play if song.present?
+    case
+    when @params.key?(:user_id)
+      random_song.play
+    when @params.key(:song_id)
+      song.play
+    end
   end
 
 private
 
-  def song
-    @song ||= songs.offset(rand(songs.count)).first
-  end
-
-  def songs
-    user.songs
+  def random_song
+    user.songs.offset(rand(songs.count)).first
   end
 
   def user
-    @user ||= User.find(@params[:user_id])
+    User.find_by(id: @params[:user_id])
+  end
+
+  def song
+    Song.find_by(id: @params[:song_id])
   end
 
 end
