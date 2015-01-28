@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>app-worker-1</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PORT</key>
+        <string>5000</string>
+    </dict>
+    <key>ProgramArguments</key>
+    <array>
+        <string>env</string>
+        <string>TERM_CHILD=1</string>
+        <string>QUEUE=thanx_welcome</string>
+        <string>RESQUE_TERM_TIMEOUT=7</string>
+        <string>COUNT=1</string>
+        <string>/Users/thanx/.rbenv/shims/bundle</string>
+        <string>exec</string>
+        <string>rake</string>
+        <string>resque:work</string>
+    </array>
+    <key>KeepAlive</key>
+    <true/>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/thanx/Development/thanx-welcome/rails/log/development.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/thanx/Development/thanx-welcome/rails/log/development.log</string>
+    <key>UserName</key>
+    <string>app</string>
+    <key>WorkingDirectory</key>
+    <string>/Users/thanx/Development/thanx-welcome/rails</string>
+</dict>
+</plist>
