@@ -13,11 +13,14 @@ class Event < ActiveRecord::Base
 protected
 
   def play_song
-    Resque.enqueue(MusicJob, user_id: self.user_id) if no_events_today?
+    if no_events_today?
+      Resque.enqueue(MusicJob, user_id: self.user_id)
+    end
+    true
   end
 
   def no_events_today?
-    self.user.events.where(
+    self.user && self.user.events.where(
       'created_at >= ? AND created_at < ?',
       Time.current.beginning_of_day, self.created_at
     ).blank?
